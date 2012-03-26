@@ -81,7 +81,7 @@ void zg_init()
 	zg_interrupt_reg(0x80|0x40, 1);
 
 	ssid_len = (U8)strlen(ssid);
-	security_passphrase_len = (U8)strlen_P(security_passphrase);
+	security_passphrase_len = (U8)strlen(security_passphrase);
 }
 
 void spi_transfer(volatile U8* buf, U16 len, U8 toggle_cs)
@@ -382,7 +382,7 @@ void zg_write_wep_key(U8* cmd_buf)
 	cmd->ssidLen = ssid_len;
 	memset(cmd->ssid, 0x00, 32);
 	memcpy(cmd->ssid, ssid, ssid_len);
-	memcpy_P(cmd->key, wep_keys, ZG_MAX_ENCRYPTION_KEYS * ZG_MAX_ENCRYPTION_KEY_SIZE);
+	memcpy(cmd->key, wep_keys, ZG_MAX_ENCRYPTION_KEYS * ZG_MAX_ENCRYPTION_KEY_SIZE);
 
 	return;
 }
@@ -398,7 +398,7 @@ static void zg_calc_psk_key(U8* cmd_buf)
 	memset(cmd->ssid, 0x00, 32);
 	memcpy(cmd->ssid, ssid, ssid_len);
 	memset(cmd->passPhrase, 0x00, 64);
-	memcpy_P(cmd->passPhrase, security_passphrase, security_passphrase_len);
+	memcpy(cmd->passPhrase, security_passphrase, security_passphrase_len);
 
 	return;
 }
