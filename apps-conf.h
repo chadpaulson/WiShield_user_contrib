@@ -60,7 +60,7 @@
 //
 // Commonly accessed WiServer settings 
 //
-#define WISERVER_GET_STRING_MAX 64 // Length of buffer which holds URL/GET passed to WiServer
+#define WISERVER_GET_STRING_MAX 255 // Length of buffer which holds URL/GET passed to WiServer
                                    // SimpleServer sendMyPage() page serving function
 
 //
